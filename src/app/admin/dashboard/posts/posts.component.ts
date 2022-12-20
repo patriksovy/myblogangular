@@ -1,6 +1,6 @@
 import { Component, OnInit, } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { PostsService } from './postlist/posts.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-posts',
@@ -8,20 +8,25 @@ import { PostsService } from './postlist/posts.service';
   styleUrls: ['./posts.component.scss']
 })
 export class PostsComponent implements OnInit{
+  public postForm: FormGroup;
+  postRef: any;
 
-  constructor(private ps:PostsService) { }
+  constructor(
+    private ps:PostsService,
+    public formBuilder: FormBuilder,
+    ) {
+      this.postForm = this.formBuilder.group({
+        title: [''],
+        content: [''],
+      })
+     }
+     ngOnInit(): void{
+      
+     }
 
-  ngOnInit(): void{
+     onSubmit(){
+      this.ps.createPost(this.postForm.value);
+     }
 
-  }
-
-  onPostData(form:NgForm){
-    if(!form.invalid){
-    this.ps.addPost(form.value.title, form.value.content, form.value.datetime,);
-    form.resetForm()
-    }else{
-      return
-    }
-  }
 
 }

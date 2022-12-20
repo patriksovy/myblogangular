@@ -1,10 +1,10 @@
 <mat-card>
-    <form (submit)="onPostData(postForm)" #postForm="ngForm">
+    <form [formGroup]="postForm"(ngSubmit)="onSubmit()" novalidate>
         <mat-form-field>
-            <input type="text" matInput name="title" placeholder="Post Title here" required="" ngModel>
+            <input type="text" matInput formControlName="title" placeholder="Post Title here" required>
         </mat-form-field>
         <mat-form-field>
-            <textarea matInput name="content" rows="10" placeholder="Post content" required="" ngModel>
+            <textarea matInput formControlName="content" rows="10" placeholder="Post content" required>
 
             </textarea>
         </mat-form-field>

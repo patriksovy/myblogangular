@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "myblog-d9516": {
+      "hosting": {
+        "MyBlog": [
+          "myblog-d9516"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "myblog-d9516"
+  }
+}
